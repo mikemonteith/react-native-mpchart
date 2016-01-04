@@ -2,7 +2,6 @@
 
 var React = require('react-native');
 var {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
@@ -10,10 +9,17 @@ var {
 
 var Chart = require('react-native-mpchart');
 
-module.exports = React.createClass({
+var data = [1, 2, 3, 4];
+
+var ReactMPChartExample = React.createClass({
   render: function(){
     return (
-      <Text>Example app</Text>
+      <View style={{flex: 1}}>
+        <Text>Example app</Text>
+        <Chart.PieChart values={data} style={{flex: 1}}/>
+      </View>
     );
   },
 });
+
+module.exports = ReactMPChartExample;

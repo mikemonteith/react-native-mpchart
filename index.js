@@ -1,1 +1,3 @@
-module.exports = {};
+module.exports = {
+  PieChart: require('./src/PieChart.js'),
+};
