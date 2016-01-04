@@ -2,21 +2,21 @@
 
 var React = require('react-native');
 var {
-  StyleSheet,
   Text,
   View,
 } = React;
 
 var Chart = require('react-native-mpchart');
 
-var data = [1, 2, 3, 4];
-
 var ReactMPChartExample = React.createClass({
   render: function(){
+    var data = [1, 1.3, 3.5];
+    var colors = ['#FF6666', '#66FF66', '#6666FF'];
+
     return (
       <View style={{flex: 1}}>
         <Text>Example app</Text>
-        <Chart.PieChart values={data} style={{flex: 1}}/>
+        <Chart.PieChart values={data} colors={colors}/>
       </View>
     );
   },

@@ -1,5 +1,7 @@
 package com.mikemonteith.reactnativempchart;
 
+import android.graphics.Color;
+
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.uimanager.ReactProp;
 import com.facebook.react.uimanager.SimpleViewManager;
@@ -27,21 +29,28 @@ public class MPChartPieManager extends SimpleViewManager<PieChart> {
     @ReactProp(name = "values")
     public void setValues(PieChart view, ReadableArray values) {
         ArrayList<Entry> vals = new ArrayList<Entry>();
-        vals.add(new Entry(1, 0));
-        vals.add(new Entry(2, 1));
-        vals.add(new Entry(3, 2));
-
-        PieDataSet dataSet = new PieDataSet(vals, "Data set 1");
-
-        System.out.println("Setting values on a pie chart");
-
         ArrayList<String> xVals = new ArrayList<String>();
-        xVals.add("");
-        xVals.add("");
-        xVals.add("");
+        for(int i=0; i<values.size(); i++) {
+            vals.add(new Entry((float) values.getDouble(i), i));
+            xVals.add("");
+        }
 
+        PieDataSet dataSet = new PieDataSet(vals, "");
         PieData data = new PieData(xVals, dataSet);
         view.setData(data);
+
+        view.invalidate();
+    }
+
+    @ReactProp(name = "colors")
+    public void setColors(PieChart view, ReadableArray colorStrings){
+        int[] colors = new int[colorStrings.size()];
+        for(int i=0; i<colorStrings.size(); i++){
+            String colorString = colorStrings.getString(i);
+            colors[i] = (Color.parseColor(colorString));
+        }
+        view.getData().getDataSet().setColors(colors);
+
         view.invalidate();
     }
 }
