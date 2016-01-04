@@ -1,0 +1,16 @@
+{
+  "name": "react-native-mpchart",
+  "version": "1.0.0",
+  "description": "React Native bridge for MPAndroidChart",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "MPAndroidChart",
+    "charts"
+  ],
+  "author": "Mike Monteith <mike@mikemonteith.com>",
+  "license": "ISC"
+}
