@@ -1,3 +1,6 @@
 rootProject.name = 'ReactMPChartExample'
 
 include ':app'
+
+include ':react-native-mpchart'
+project(':react-native-mpchart').projectDir = new File(rootProject.projectDir, '../../../android')
