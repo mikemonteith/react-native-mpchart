@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class MPChartPieManager extends SimpleViewManager<PieChart> {
     public static final String REACT_CLASS = "MPChartPie";
 
-    private boolean drawValuesEnabled;
+    private boolean drawValuesEnabled = true;
     private int[] colors;
 
     @Override
@@ -79,7 +79,9 @@ public class MPChartPieManager extends SimpleViewManager<PieChart> {
 
         PieDataSet dataSet = new PieDataSet(vals, "");
         dataSet.setDrawValues(drawValuesEnabled);
-        dataSet.setColors(this.colors);
+        if(colors != null){
+            dataSet.setColors(this.colors);
+        }
         PieData data = new PieData(xVals, dataSet);
         view.setData(data);
 
@@ -102,7 +104,7 @@ public class MPChartPieManager extends SimpleViewManager<PieChart> {
         view.invalidate();
     }
 
-    @ReactProp(name = "drawValues", defaultBoolean = false)
+    @ReactProp(name = "drawValues", defaultBoolean = true)
     public void setDrawValues(PieChart view, boolean drawValuesEnabled){
         this.drawValuesEnabled = drawValuesEnabled;
 
