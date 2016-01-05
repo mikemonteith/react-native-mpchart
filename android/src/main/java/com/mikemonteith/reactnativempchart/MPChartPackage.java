@@ -19,7 +19,8 @@ public class MPChartPackage implements ReactPackage {
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactApplicationContext) {
         return Arrays.<ViewManager>asList(
-            new MPChartPieManager()
+                new MPChartPieManager(),
+                new MPChartBarManager()
         );
     }
 
