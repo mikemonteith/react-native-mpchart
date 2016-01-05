@@ -42,7 +42,7 @@ public class MPChartPieManager extends SimpleViewManager<PieChart> {
 
             public void onValueSelected(Entry entry, int dataSetIndex, Highlight highlight){
                 WritableMap event = Arguments.createMap();
-                event.putString("type", "segmentSelect");
+                event.putString("type", "valueSelect");
                 event.putDouble("value", (double) entry.getVal());
                 event.putInt("xIndex", entry.getXIndex());
 
@@ -55,7 +55,7 @@ public class MPChartPieManager extends SimpleViewManager<PieChart> {
 
             public void onNothingSelected(){
                 WritableMap event = Arguments.createMap();
-                event.putString("type", "segmentDeselect");
+                event.putString("type", "clearSelection");
                 context.getJSModule(RCTEventEmitter.class).receiveEvent(
                         chart.getId(),
                         "topSelect",

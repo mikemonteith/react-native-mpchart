@@ -8,15 +8,15 @@ var BarChart = React.createClass({
     colors: React.PropTypes.array,
     values: React.PropTypes.array,
     drawValues: React.PropTypes.bool,
-    onBarSelect: React.PropTypes.func,
-    onBarDeselect: React.PropTypes.func,
+    onValueSelect: React.PropTypes.func,
+    onClearSelection: React.PropTypes.func,
   },
 
   _onSelect: function(event){
-    if(event.type === "barSelect" && this.props.onBarSelect){
-      this.props.onBarSelect(event);
-    }else if(event.type === "barDeselect" && this.props.onBarDeselect){
-      this.props.onBarDeselect(event);
+    if(event.type === "valueSelect" && this.props.onValueSelect){
+      this.props.onValueSelect(event);
+    }else if(event.type === "clearSelection" && this.props.onClearSelection){
+      this.props.onClearSelection(event);
     }
   },
 

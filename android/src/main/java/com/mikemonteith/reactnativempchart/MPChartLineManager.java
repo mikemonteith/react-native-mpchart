@@ -38,7 +38,7 @@ public class MPChartLineManager extends SimpleViewManager<LineChart> {
 
             public void onValueSelected(Entry entry, int dataSetIndex, Highlight highlight) {
                 WritableMap event = Arguments.createMap();
-                event.putString("type", "pointSelect");
+                event.putString("type", "valueSelect");
                 event.putDouble("value", (double) entry.getVal());
                 event.putInt("xIndex", entry.getXIndex());
 
@@ -51,7 +51,7 @@ public class MPChartLineManager extends SimpleViewManager<LineChart> {
 
             public void onNothingSelected() {
                 WritableMap event = Arguments.createMap();
-                event.putString("type", "pointDeselect");
+                event.putString("type", "clearSelection");
                 context.getJSModule(RCTEventEmitter.class).receiveEvent(
                         chart.getId(),
                         "topSelect",

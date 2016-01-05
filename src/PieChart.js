@@ -8,15 +8,15 @@ var PieChart = React.createClass({
     colors: React.PropTypes.array,
     values: React.PropTypes.array,
     drawValues: React.PropTypes.bool,
-    onSegmentSelect: React.PropTypes.func,
-    onSegmentDeselect: React.PropTypes.func,
+    onValueSelect: React.PropTypes.func,
+    onClearSelection: React.PropTypes.func,
   },
 
   _onSelect: function(event){
-    if(event.type === "segmentSelect" && this.props.onSegmentSelect){
-      this.props.onSegmentSelect(event);
-    }else if(event.type === "segmentDeselect" && this.props.onSegmentDeselect){
-      this.props.onSegmentDeselect(event);
+    if(event.type === "valueSelect" && this.props.onValueSelect){
+      this.props.onValueSelect(event);
+    }else if(event.type === "clearSelection" && this.props.onClearSelection){
+      this.props.onClearSelection(event);
     }
   },
 

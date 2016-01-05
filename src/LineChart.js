@@ -8,15 +8,15 @@ var LineChart = React.createClass({
     colors: React.PropTypes.array,
     values: React.PropTypes.array,
     drawValues: React.PropTypes.bool,
-    onPointSelect: React.PropTypes.func,
-    onPointDeselect: React.PropTypes.func,
+    onValueSelect: React.PropTypes.func,
+    onClearSelection: React.PropTypes.func,
   },
 
   _onSelect: function(event){
-    if(event.type === "pointSelect" && this.props.onPointSelect){
-      this.props.onPointSelect(event);
-    }else if(event.type === "pointDeselect" && this.props.onPointDeselect){
-      this.props.onPointDeselect(event);
+    if(event.type === "valueSelect" && this.props.onValueSelect){
+      this.props.onValueSelect(event);
+    }else if(event.type === "clearSelection" && this.props.onClearSelection){
+      this.props.onClearSelection(event);
     }
   },
 

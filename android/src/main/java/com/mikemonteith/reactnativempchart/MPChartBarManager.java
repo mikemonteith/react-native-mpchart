@@ -39,7 +39,7 @@ public class MPChartBarManager extends SimpleViewManager<BarChart> {
 
             public void onValueSelected(Entry entry, int dataSetIndex, Highlight highlight) {
                 WritableMap event = Arguments.createMap();
-                event.putString("type", "barSelect");
+                event.putString("type", "valueSelect");
                 event.putDouble("value", (double) entry.getVal());
                 event.putInt("xIndex", entry.getXIndex());
 
@@ -52,7 +52,7 @@ public class MPChartBarManager extends SimpleViewManager<BarChart> {
 
             public void onNothingSelected() {
                 WritableMap event = Arguments.createMap();
-                event.putString("type", "barDeselect");
+                event.putString("type", "clearSelection");
                 context.getJSModule(RCTEventEmitter.class).receiveEvent(
                         chart.getId(),
                         "topSelect",
