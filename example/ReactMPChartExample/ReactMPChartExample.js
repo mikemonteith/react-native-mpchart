@@ -57,6 +57,16 @@ var ReactMPChartExample = React.createClass({
             onBarDeselect={function(e){ console.log("bar deselect", e.nativeEvent);}}
           />
         </View>
+        <View style={styles.chart}>
+          <Text>Line Chart</Text>
+          <Charts.LineChart
+            style={{flex: 1}}
+            values={[1,1.5,8,7,6,5,6,6.5,6,8,5,1,0.2,3,0.5]}
+            colors={colors}
+            onPointSelect={function(e){ console.log("point select", e.nativeEvent);}}
+            onPointDeselect={function(e){ console.log("point deselect", e.nativeEvent);}}
+          />
+        </View>
       </ScrollView>
     );
   },

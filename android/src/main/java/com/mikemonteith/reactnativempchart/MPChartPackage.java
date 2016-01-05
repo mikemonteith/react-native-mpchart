@@ -20,7 +20,8 @@ public class MPChartPackage implements ReactPackage {
     public List<ViewManager> createViewManagers(ReactApplicationContext reactApplicationContext) {
         return Arrays.<ViewManager>asList(
                 new MPChartPieManager(),
-                new MPChartBarManager()
+                new MPChartBarManager(),
+                new MPChartLineManager()
         );
     }
 
