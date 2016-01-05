@@ -22,7 +22,8 @@ import java.util.ArrayList;
 public class MPChartPieManager extends SimpleViewManager<PieChart> {
     public static final String REACT_CLASS = "MPChartPie";
 
-    private ThemedReactContext context;
+    private boolean drawValuesEnabled;
+    private int[] colors;
 
     @Override
     public String getName(){
@@ -31,8 +32,11 @@ public class MPChartPieManager extends SimpleViewManager<PieChart> {
 
     @Override
     protected PieChart createViewInstance(final ThemedReactContext context) {
-        this.context = context;
         final PieChart chart = new PieChart(context);
+        chart.setDescription("");
+        chart.setHoleColorTransparent(true);
+        chart.getLegend().setEnabled(false);
+        chart.setRotationEnabled(false);
 
         chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener(){
 
@@ -74,6 +78,8 @@ public class MPChartPieManager extends SimpleViewManager<PieChart> {
         }
 
         PieDataSet dataSet = new PieDataSet(vals, "");
+        dataSet.setDrawValues(drawValuesEnabled);
+        dataSet.setColors(this.colors);
         PieData data = new PieData(xVals, dataSet);
         view.setData(data);
 
@@ -87,7 +93,22 @@ public class MPChartPieManager extends SimpleViewManager<PieChart> {
             String colorString = colorStrings.getString(i);
             colors[i] = (Color.parseColor(colorString));
         }
-        view.getData().getDataSet().setColors(colors);
+
+        this.colors = colors;
+        if(view.getData() != null && view.getData().getDataSet() != null) {
+            view.getData().getDataSet().setColors(colors);
+        }
+
+        view.invalidate();
+    }
+
+    @ReactProp(name = "drawValues", defaultBoolean = false)
+    public void setDrawValues(PieChart view, boolean drawValuesEnabled){
+        this.drawValuesEnabled = drawValuesEnabled;
+
+        if(view.getData() != null){
+            view.getData().setDrawValues(drawValuesEnabled);
+        }
 
         view.invalidate();
     }

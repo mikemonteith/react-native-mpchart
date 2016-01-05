@@ -1,11 +1,13 @@
 var React = require('react-native');
 
-var PieChartComponent = React.requireNativeComponent('MPChartPie');
-
-module.exports = React.createClass({
+var PieChart = React.createClass({
+  name: 'PieChart',
   propTypes: {
+    ...React.View.propTypes,
+
     colors: React.PropTypes.array,
     values: React.PropTypes.array,
+    drawValues: React.PropTypes.bool,
     onSegmentSelect: React.PropTypes.func,
     onSegmentDeselect: React.PropTypes.func,
   },
@@ -21,11 +23,16 @@ module.exports = React.createClass({
   render: function(){
     return (
       <PieChartComponent
-        style={[{flex: 1}, this.props.style]}
-        colors={this.props.colors}
-        values={this.props.values}
+        {...this.props}
         onSelect={this._onSelect}
       />
     );
   },
+
 });
+
+var PieChartComponent = React.requireNativeComponent('MPChartPie', PieChart, {
+  nativeOnly: {onSelect: true},
+});
+
+module.exports = PieChart;
