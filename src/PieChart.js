@@ -1,25 +1,22 @@
 'use strict';
 
 var React = require('react-native');
+var BaseChartMixin = require('./mixins/BaseChartMixin.js');
 
 var PieChart = React.createClass({
   name: 'PieChart',
+  mixins: [BaseChartMixin],
   propTypes: {
-    ...React.View.propTypes,
+    /*
+     * Radius of the pie hole in percent
+     */
+    holeRadius: React.PropTypes.number,
 
-    colors: React.PropTypes.array,
-    values: React.PropTypes.array,
-    drawValues: React.PropTypes.bool,
-    onValueSelect: React.PropTypes.func,
-    onClearSelection: React.PropTypes.func,
-  },
-
-  _onSelect: function(event){
-    if (event.type === 'valueSelect' && this.props.onValueSelect){
-      this.props.onValueSelect(event);
-    }else if (event.type === 'clearSelection' && this.props.onClearSelection){
-      this.props.onClearSelection(event);
-    }
+    /*
+     * Angle that the first segment starts at in degrees
+     * (0 degrees = 3 oclock)
+     */
+    rotationAngle: React.PropTypes.number,
   },
 
   render: function(){

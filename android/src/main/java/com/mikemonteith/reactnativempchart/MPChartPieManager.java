@@ -19,51 +19,27 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
 
-public class MPChartPieManager extends SimpleViewManager<PieChart> {
+public class MPChartPieManager extends MPChartBaseManager<PieChart> {
     public static final String REACT_CLASS = "MPChartPie";
 
-    private boolean drawValuesEnabled = true;
-    private int[] colors;
+    MPChartPieManager(){
+        super(PieChart.class);
+    }
 
     @Override
     public String getName(){
         return REACT_CLASS;
     }
 
-    @Override
-    protected PieChart createViewInstance(final ThemedReactContext context) {
-        final PieChart chart = new PieChart(context);
-        chart.setDescription("");
+    protected PieChart createViewInstance(final ThemedReactContext context){
+        PieChart chart = (PieChart) super.createViewInstance(context);
+
+        /**
+         * set some pie chart defaults
+         * TODO: These options should be configurable
+         */
         chart.setHoleColorTransparent(true);
-        chart.getLegend().setEnabled(false);
         chart.setRotationEnabled(false);
-
-        chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener(){
-
-            public void onValueSelected(Entry entry, int dataSetIndex, Highlight highlight){
-                WritableMap event = Arguments.createMap();
-                event.putString("type", "valueSelect");
-                event.putDouble("value", (double) entry.getVal());
-                event.putInt("xIndex", entry.getXIndex());
-
-                context.getJSModule(RCTEventEmitter.class).receiveEvent(
-                        chart.getId(),
-                        "topSelect",
-                        event
-                );
-            }
-
-            public void onNothingSelected(){
-                WritableMap event = Arguments.createMap();
-                event.putString("type", "clearSelection");
-                context.getJSModule(RCTEventEmitter.class).receiveEvent(
-                        chart.getId(),
-                        "topSelect",
-                        event
-                );
-            }
-
-        });
 
         return chart;
     }
@@ -88,30 +64,15 @@ public class MPChartPieManager extends SimpleViewManager<PieChart> {
         view.invalidate();
     }
 
-    @ReactProp(name = "colors")
-    public void setColors(PieChart view, ReadableArray colorStrings){
-        int[] colors = new int[colorStrings.size()];
-        for(int i=0; i<colorStrings.size(); i++){
-            String colorString = colorStrings.getString(i);
-            colors[i] = (Color.parseColor(colorString));
-        }
-
-        this.colors = colors;
-        if(view.getData() != null && view.getData().getDataSet() != null) {
-            view.getData().getDataSet().setColors(colors);
-        }
-
+    @ReactProp(name = "holeRadius", defaultFloat = 50f)
+    public void setThickness(PieChart view, float holeRadius){
+        view.setHoleRadius(holeRadius);
         view.invalidate();
     }
 
-    @ReactProp(name = "drawValues", defaultBoolean = true)
-    public void setDrawValues(PieChart view, boolean drawValuesEnabled){
-        this.drawValuesEnabled = drawValuesEnabled;
-
-        if(view.getData() != null){
-            view.getData().setDrawValues(drawValuesEnabled);
-        }
-
+    @ReactProp(name = "rotationAngle", defaultFloat = 0)
+    public void setRotationAngle(PieChart view, float angle){
+        view.setRotationAngle(angle);
         view.invalidate();
     }
 }

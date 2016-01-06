@@ -19,50 +19,16 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
 
-public class MPChartBarManager extends SimpleViewManager<BarChart> {
+public class MPChartBarManager extends MPChartBaseManager<BarChart> {
     public static final String REACT_CLASS = "MPChartBar";
 
-    private int[] colors;
+    MPChartBarManager(){
+        super(BarChart.class);
+    }
 
     @Override
     public String getName(){
         return REACT_CLASS;
-    }
-
-    @Override
-    protected BarChart createViewInstance(final ThemedReactContext context){
-        final BarChart chart = new BarChart(context);
-        chart.setDescription("");
-        chart.getLegend().setEnabled(false);
-
-        chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
-
-            public void onValueSelected(Entry entry, int dataSetIndex, Highlight highlight) {
-                WritableMap event = Arguments.createMap();
-                event.putString("type", "valueSelect");
-                event.putDouble("value", (double) entry.getVal());
-                event.putInt("xIndex", entry.getXIndex());
-
-                context.getJSModule(RCTEventEmitter.class).receiveEvent(
-                        chart.getId(),
-                        "topSelect",
-                        event
-                );
-            }
-
-            public void onNothingSelected() {
-                WritableMap event = Arguments.createMap();
-                event.putString("type", "clearSelection");
-                context.getJSModule(RCTEventEmitter.class).receiveEvent(
-                        chart.getId(),
-                        "topSelect",
-                        event
-                );
-            }
-
-        });
-
-        return chart;
     }
 
     @ReactProp(name = "values")
@@ -84,19 +50,4 @@ public class MPChartBarManager extends SimpleViewManager<BarChart> {
         chart.invalidate();
     }
 
-    @ReactProp(name = "colors")
-    public void setColors(BarChart chart, ReadableArray colorStrings){
-        int[] colors = new int[colorStrings.size()];
-        for(int i=0; i<colorStrings.size(); i++){
-            String colorString = colorStrings.getString(i);
-            colors[i] = (Color.parseColor(colorString));
-        }
-
-        this.colors = colors;
-        if(chart.getData() != null && chart.getData().getDataSetByIndex(0) != null) {
-            chart.getData().getDataSetByIndex(0).setColors(colors);
-        }
-
-        chart.invalidate();
-    }
 }

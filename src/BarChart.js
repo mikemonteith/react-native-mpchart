@@ -1,25 +1,12 @@
 'use strict';
 
 var React = require('react-native');
+var BaseChartMixin = require('./mixins/BaseChartMixin.js');
 
 var BarChart = React.createClass({
   name: 'BarChart',
+  mixins: [BaseChartMixin],
   propTypes: {
-    ...React.View.propTypes,
-
-    colors: React.PropTypes.array,
-    values: React.PropTypes.array,
-    drawValues: React.PropTypes.bool,
-    onValueSelect: React.PropTypes.func,
-    onClearSelection: React.PropTypes.func,
-  },
-
-  _onSelect: function(event){
-    if (event.type === 'valueSelect' && this.props.onValueSelect){
-      this.props.onValueSelect(event);
-    }else if (event.type === 'clearSelection' && this.props.onClearSelection){
-      this.props.onClearSelection(event);
-    }
   },
 
   render: function(){

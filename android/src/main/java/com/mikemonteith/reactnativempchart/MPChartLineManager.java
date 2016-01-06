@@ -18,50 +18,16 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
 
-public class MPChartLineManager extends SimpleViewManager<LineChart> {
+public class MPChartLineManager extends MPChartBaseManager<LineChart> {
     public static final String REACT_CLASS = "MPChartLine";
 
-    private int[] colors;
+    MPChartLineManager(){
+        super(LineChart.class);
+    }
 
     @Override
     public String getName(){
         return REACT_CLASS;
-    }
-
-    @Override
-    protected LineChart createViewInstance(final ThemedReactContext context){
-        final LineChart chart = new LineChart(context);
-        chart.setDescription("");
-        chart.getLegend().setEnabled(false);
-
-        chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
-
-            public void onValueSelected(Entry entry, int dataSetIndex, Highlight highlight) {
-                WritableMap event = Arguments.createMap();
-                event.putString("type", "valueSelect");
-                event.putDouble("value", (double) entry.getVal());
-                event.putInt("xIndex", entry.getXIndex());
-
-                context.getJSModule(RCTEventEmitter.class).receiveEvent(
-                        chart.getId(),
-                        "topSelect",
-                        event
-                );
-            }
-
-            public void onNothingSelected() {
-                WritableMap event = Arguments.createMap();
-                event.putString("type", "clearSelection");
-                context.getJSModule(RCTEventEmitter.class).receiveEvent(
-                        chart.getId(),
-                        "topSelect",
-                        event
-                );
-            }
-
-        });
-
-        return chart;
     }
 
     @ReactProp(name = "values")
@@ -79,22 +45,6 @@ public class MPChartLineManager extends SimpleViewManager<LineChart> {
         }
         LineData data = new LineData(xVals, dataSet);
         chart.setData(data);
-
-        chart.invalidate();
-    }
-
-    @ReactProp(name = "colors")
-    public void setColors(LineChart chart, ReadableArray colorStrings){
-        int[] colors = new int[colorStrings.size()];
-        for(int i=0; i<colorStrings.size(); i++){
-            String colorString = colorStrings.getString(i);
-            colors[i] = (Color.parseColor(colorString));
-        }
-
-        this.colors = colors;
-        if(chart.getData() != null && chart.getData().getDataSetByIndex(0) != null) {
-            chart.getData().getDataSetByIndex(0).setColors(colors);
-        }
 
         chart.invalidate();
     }
