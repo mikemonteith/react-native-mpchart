@@ -12,5 +12,8 @@
     "charts"
   ],
   "author": "Mike Monteith <mike@mikemonteith.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint-plugin-react": "^3.14.0"
+  }
 }

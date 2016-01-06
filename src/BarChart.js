@@ -1,3 +1,5 @@
+'use strict';
+
 var React = require('react-native');
 
 var BarChart = React.createClass({
@@ -13,9 +15,9 @@ var BarChart = React.createClass({
   },
 
   _onSelect: function(event){
-    if(event.type === "valueSelect" && this.props.onValueSelect){
+    if (event.type === 'valueSelect' && this.props.onValueSelect){
       this.props.onValueSelect(event);
-    }else if(event.type === "clearSelection" && this.props.onClearSelection){
+    }else if (event.type === 'clearSelection' && this.props.onClearSelection){
       this.props.onClearSelection(event);
     }
   },
