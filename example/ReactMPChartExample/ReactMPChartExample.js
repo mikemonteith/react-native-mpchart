@@ -30,7 +30,6 @@ var ReactMPChartExample = React.createClass({
   },
 
   render: function(){
-    var data = [1, 1.3, 3.5];
     var colors = ['#FF6666', '#66FF66', '#6666FF'];
 
     return (
@@ -40,11 +39,13 @@ var ReactMPChartExample = React.createClass({
           <Text>Pie Chart {this.state.text}</Text>
           <Charts.PieChart
             style={{flex: 1}}
-            values={data}
+            values={[0.1, 1.3, 3.5]}
             colors={colors}
             onValueSelect={this.onSegmentSelect}
             onClearSelection={this.onSegmentDeselect}
             drawValues={false}
+            rotationAngle={45}
+            holeRadius={70}
           />
         </View>
         <View style={styles.chart}>
@@ -53,8 +54,20 @@ var ReactMPChartExample = React.createClass({
             style={{flex: 1}}
             values={[1,2,3,2,3,1,10,3,6,8,5,1,0.2,3,-0.5]}
             colors={colors}
-            onValueSelect={function(e){ console.log("bar select", e.nativeEvent);}}
-            onClearSelection={function(e){ console.log("bar deselect", e.nativeEvent);}}
+            drawValues={false}
+            touchEnabled={false}
+            leftAxis={{
+              minValue: -2,
+              maxValue: 12,
+              drawGridLines: false,
+              inverted: true,
+            }}
+            rightAxis={{
+              enabled: false,
+            }}
+            xAxis={{
+              enabled: false,
+            }}
           />
         </View>
         <View style={styles.chart}>
@@ -63,8 +76,6 @@ var ReactMPChartExample = React.createClass({
             style={{flex: 1}}
             values={[1,1.5,8,7,6,5,6,6.5,6,8,5,1,0.2,3,0.5]}
             colors={colors}
-            onValueSelect={function(e){ console.log("point select", e.nativeEvent);}}
-            onClearSelection={function(e){ console.log("point deselect", e.nativeEvent);}}
           />
         </View>
       </ScrollView>
