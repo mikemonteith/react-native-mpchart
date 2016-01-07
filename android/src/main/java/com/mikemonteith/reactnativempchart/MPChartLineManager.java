@@ -40,6 +40,7 @@ public class MPChartLineManager extends MPChartBaseManager<LineChart> {
         }
 
         LineDataSet dataSet = new LineDataSet(vals, "");
+        dataSet.setDrawValues(drawValuesEnabled);
         if(colors != null){
             dataSet.setColors(this.colors);
         }

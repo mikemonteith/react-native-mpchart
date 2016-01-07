@@ -41,6 +41,7 @@ public class MPChartBarManager extends MPChartBaseManager<BarChart> {
         }
 
         BarDataSet dataSet = new BarDataSet(vals, "");
+        dataSet.setDrawValues(drawValuesEnabled);
         if(colors != null){
             dataSet.setColors(this.colors);
         }
