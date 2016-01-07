@@ -18,7 +18,7 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
 
-public class MPChartLineManager extends MPChartBaseManager<LineChart> {
+public class MPChartLineManager extends MPChartBarLineManager<LineChart> {
     public static final String REACT_CLASS = "MPChartLine";
 
     MPChartLineManager(){

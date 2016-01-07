@@ -1,13 +1,11 @@
 'use strict';
 
 var React = require('react-native');
-var BaseChartMixin = require('./mixins/BaseChartMixin.js');
+var BarLineChartMixin = require('./mixins/BarLineChartMixin.js');
 
 var LineChart = React.createClass({
   name: 'LineChart',
-  mixins: [BaseChartMixin],
-  propTypes: {
-  },
+  mixins: [BarLineChartMixin],
 
   render: function(){
     return (
