@@ -33,6 +33,7 @@ var XAxisPropMap = React.PropTypes.shape({
 var BarLineChartMixin = {
   mixins: [BaseChartMixin],
   propTypes: {
+    gridBackgroundColor: React.PropTypes.string,
     leftAxis: YAxisPropMap,
     rightAxis: YAxisPropMap,
     xAxis: XAxisPropMap,

@@ -1,5 +1,7 @@
 package com.mikemonteith.reactnativempchart;
 
+import android.graphics.Color;
+
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.uimanager.ReactProp;
 import com.github.mikephil.charting.charts.BarChart;
@@ -8,10 +10,17 @@ import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarLineScatterCandleBubbleData;
+import com.github.mikephil.charting.data.BarLineScatterCandleBubbleDataSet;
+import com.github.mikephil.charting.data.Entry;
 
 public abstract class MPChartBarLineManager<T extends BarLineChartBase> extends MPChartBaseManager<T>{
-    MPChartBarLineManager(Class<? extends BarLineChartBase> cls){
-        super(cls);
+    MPChartBarLineManager(Class<? extends BarLineChartBase> chartClass,
+                          Class<? extends BarLineScatterCandleBubbleData> dataClass,
+                          Class<? extends BarLineScatterCandleBubbleDataSet> dataSetClass,
+                          Class<? extends Entry> entryClass
+    ){
+        super(chartClass, dataClass, dataSetClass, entryClass);
     }
 
     private static void updateAxisOptions(AxisBase axis, ReadableMap map) {
@@ -67,6 +76,12 @@ public abstract class MPChartBarLineManager<T extends BarLineChartBase> extends 
     @ReactProp(name = "xAxis")
     public void setXAxis(BarLineChartBase chart, ReadableMap map){
         updateXAxisOptions(chart.getXAxis(), map);
+        chart.invalidate();
+    }
+
+    @ReactProp(name = "gridBackgroundColor")
+    public void setGridBackgroundColor(BarLineChartBase chart, String gridBackgroundColor){
+        chart.setGridBackgroundColor(Color.parseColor(gridBackgroundColor));
         chart.invalidate();
     }
 }

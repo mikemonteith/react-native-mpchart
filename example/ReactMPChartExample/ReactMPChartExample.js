@@ -39,8 +39,12 @@ var ReactMPChartExample = React.createClass({
           <Text>Pie Chart {this.state.text}</Text>
           <Charts.PieChart
             style={{flex: 1}}
-            values={[0.1, 1.3, 3.5]}
-            colors={colors}
+            data={{
+              dataSets: [{
+                values: [0.1, 1.3, 3.5],
+                colors: colors,
+              }],
+            }}
             onValueSelect={this.onSegmentSelect}
             onClearSelection={this.onSegmentDeselect}
             drawValues={false}
@@ -52,15 +56,30 @@ var ReactMPChartExample = React.createClass({
           <Text>Bar Chart</Text>
           <Charts.BarChart
             style={{flex: 1}}
-            values={[1,2,3,2,3,1,10,3,6,8,5,1,0.2,3,-0.5]}
-            colors={colors}
-            drawValues={false}
+            values={[
+              [1,2,3,2,3,1,10,3,6,8,5,1,0.2,3,-0.5],
+              [1,2,3,4,5,6, 7,6,5,4,5,6,  7,4,   0]
+            ]}
+            data={{
+              dataSets:[{
+                values: [1,2,3,4,5,6,7],
+                colors: ['#990000'],
+                drawValues: false,
+              },{
+                values: [4,3,4,2,1,3,1],
+                colors: ['#009900'],
+                drawValues: false,
+              }],
+              xValues: ["A","B","C","D","E","F","E"],
+              highlightEnabled: false,
+            }}
+            gridBackgroundColor="#33990000" //transparent red
             touchEnabled={false}
             leftAxis={{
-              minValue: -2,
-              maxValue: 12,
+              //minValue: -12,
+              //maxValue: 12,
               drawGridLines: false,
-              inverted: true,
+              //inverted: true,
             }}
             rightAxis={{
               enabled: false,
@@ -74,8 +93,13 @@ var ReactMPChartExample = React.createClass({
           <Text>Line Chart</Text>
           <Charts.LineChart
             style={{flex: 1}}
-            values={[1,1.5,8,7,6,5,6,6.5,6,8,5,1,0.2,3,0.5]}
-            colors={colors}
+            data={{
+              dataSets: [{
+                values: [1,1.5,8,7,6,5,6,6.5,6,8,5,1,0.2,3,0.5],
+                colors: ['#990000'],
+              }],
+              xValues: new Array(15).fill(""),
+            }}
           />
         </View>
       </ScrollView>

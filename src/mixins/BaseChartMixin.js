@@ -9,21 +9,31 @@ var BaseChartMixin = {
      */
     ...React.View.propTypes,
 
-
     /*
-     * Array of colors to use when drawing the graph
+     * data to display with the graph
      */
-    colors: React.PropTypes.array,
+    data: React.PropTypes.shape({
+      dataSets: React.PropTypes.arrayOf(React.PropTypes.shape({
+        /*
+         * Array of values to display with the graph
+         */
+        values: React.PropTypes.arrayOf(React.PropTypes.number),
 
-    /*
-     * Array of values to display with the graph
-     */
-    values: React.PropTypes.array,
+        /*
+         */
+        colors: React.PropTypes.arrayOf(React.PropTypes.string),
 
-    /*
-     * Should text labels be drawn for values
-     */
-    drawValues: React.PropTypes.bool,
+        /*
+         * Should text labels be drawn for values
+         */
+        drawValues: React.PropTypes.bool,
+      })),
+
+      /*
+       * Array of strings defining x-axis labels
+       */
+      xValues: React.PropTypes.arrayOf(React.PropTypes.string),
+    }),
 
     /*
      * enable touch events on the chart
