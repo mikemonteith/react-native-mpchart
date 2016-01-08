@@ -14,11 +14,13 @@ import com.github.mikephil.charting.data.BarLineScatterCandleBubbleData;
 import com.github.mikephil.charting.data.BarLineScatterCandleBubbleDataSet;
 import com.github.mikephil.charting.data.Entry;
 
-public abstract class MPChartBarLineManager<T extends BarLineChartBase> extends MPChartBaseManager<T>{
-    MPChartBarLineManager(Class<? extends BarLineChartBase> chartClass,
-                          Class<? extends BarLineScatterCandleBubbleData> dataClass,
-                          Class<? extends BarLineScatterCandleBubbleDataSet> dataSetClass,
-                          Class<? extends Entry> entryClass
+public abstract class MPChartBarLineManager<ChartClass extends BarLineChartBase, ChartDataClass extends BarLineScatterCandleBubbleData,
+        DataSetClass extends BarLineScatterCandleBubbleDataSet, EntryClass extends Entry>
+        extends MPChartBaseManager<ChartClass, ChartDataClass, DataSetClass, EntryClass>{
+    MPChartBarLineManager(Class<ChartClass> chartClass,
+                          Class<ChartDataClass> dataClass,
+                          Class<DataSetClass> dataSetClass,
+                          Class<EntryClass> entryClass
     ){
         super(chartClass, dataClass, dataSetClass, entryClass);
     }

@@ -97,6 +97,9 @@ var ReactMPChartExample = React.createClass({
               dataSets: [{
                 values: [1,1.5,8,7,6,5,6,6.5,6,8,5,1,0.2,3,0.5],
                 colors: ['#990000'],
+                drawCircles: false,
+                drawValues: false,
+                drawCubic: true,
               }],
               xValues: new Array(15).fill(""),
             }}

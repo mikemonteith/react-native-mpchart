@@ -7,7 +7,7 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 
-public class MPChartBarManager extends MPChartBarLineManager<BarChart> {
+public class MPChartBarManager extends MPChartBarLineManager<BarChart, BarData, BarDataSet, BarEntry> {
     public static final String REACT_CLASS = "MPChartBar";
 
     private ReadableMap leftAxisOptions;

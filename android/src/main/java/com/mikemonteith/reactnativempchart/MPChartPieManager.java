@@ -7,7 +7,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 
-public class MPChartPieManager extends MPChartBaseManager<PieChart> {
+public class MPChartPieManager extends MPChartBaseManager<PieChart, PieData, PieDataSet, Entry> {
     public static final String REACT_CLASS = "MPChartPie";
 
     MPChartPieManager(){
