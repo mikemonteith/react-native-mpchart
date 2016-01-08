@@ -100,6 +100,7 @@ var ReactMPChartExample = React.createClass({
                 drawCircles: false,
                 drawValues: false,
                 drawCubic: true,
+                lineWidth: 3,
               }],
               xValues: new Array(15).fill(""),
             }}

@@ -24,6 +24,10 @@ public class MPChartLineManager extends MPChartBarLineManager<LineChart, LineDat
         if(map.hasKey("drawCubic")) {
             dataSet.setDrawCubic(map.getBoolean("drawCubic"));
         }
+
+        if(map.hasKey("lineWidth")){
+            dataSet.setLineWidth((float) map.getDouble("lineWidth"));
+        }
     }
 
     @Override

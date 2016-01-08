@@ -23,6 +23,11 @@ var LineChart = React.createClass({
          * Draw smooth line of best fit
          */
         drawCubic: React.PropTypes.bool,
+
+        /*
+         * Pixel width of the line of best fit
+         */
+        lineWidth: React.PropTypes.number,
       })),
     }),
   },
