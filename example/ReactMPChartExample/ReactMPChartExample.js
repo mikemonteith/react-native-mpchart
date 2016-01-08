@@ -102,7 +102,10 @@ var ReactMPChartExample = React.createClass({
                 drawCubic: true,
                 lineWidth: 3,
               }],
-              xValues: new Array(15).fill(""),
+              xValues: new Array(15).fill("x"),
+            }}
+            xAxis={{
+              position: 'bottom',
             }}
           />
         </View>

@@ -28,6 +28,7 @@ var YAxisPropMap = React.PropTypes.shape({
  */
 var XAxisPropMap = React.PropTypes.shape({
   ...AxisBasePropMap,
+  position: React.PropTypes.oneOf(['bottom', 'top', 'bothSided']),
 });
 
 var BarLineChartMixin = {

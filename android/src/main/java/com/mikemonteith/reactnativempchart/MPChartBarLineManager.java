@@ -61,6 +61,24 @@ public abstract class MPChartBarLineManager<ChartClass extends BarLineChartBase,
          * so they are set in the generic updateAxisOptions function
          */
         updateAxisOptions(axis, map);
+
+        if(map.hasKey("position")){
+            XAxis.XAxisPosition position = null;
+            switch(map.getString("position")){
+                case "bottom":
+                    position = XAxis.XAxisPosition.BOTTOM;
+                    break;
+                case "top":
+                    position = XAxis.XAxisPosition.TOP;
+                    break;
+                case "bothSided":
+                    position = XAxis.XAxisPosition.BOTH_SIDED;
+                    break;
+            }
+            if(position != null){
+                axis.setPosition(position);
+            }
+        }
     }
 
     @ReactProp(name = "leftAxis")
