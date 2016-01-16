@@ -117,7 +117,7 @@ var ExampleComponent = React.createClass({
 | drawValues | draw value text | boolean | All
 | drawCircles | draw circles on data points | boolean | Line
 | drawCubic | draw a smooth line-of-best-fit | boolean | Line
-| lineWidth | width of the line-of-best-fit | boolean | Line
+| lineWidth | width of the line-of-best-fit | number | Line
 
 #### axis properties
 

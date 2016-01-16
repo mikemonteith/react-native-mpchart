@@ -56,10 +56,6 @@ var ReactMPChartExample = React.createClass({
           <Text>Bar Chart</Text>
           <Charts.BarChart
             style={{flex: 1}}
-            values={[
-              [1,2,3,2,3,1,10,3,6,8,5,1,0.2,3,-0.5],
-              [1,2,3,4,5,6, 7,6,5,4,5,6,  7,4,   0]
-            ]}
             data={{
               dataSets:[{
                 values: [1,2,3,4,5,6,7],
