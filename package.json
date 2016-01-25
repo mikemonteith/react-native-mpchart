@@ -1,6 +1,6 @@
 {
   "name": "react-native-mpchart",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "React Native bridge for MPAndroidChart",
   "main": "index.js",
   "scripts": {
