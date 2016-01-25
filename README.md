@@ -100,6 +100,12 @@ var ExampleComponent = React.createClass({
 | leftAxis | see [yaxis properties](#y-axis-properties) | object | Bar, Line
 | rightAxis | see [yaxis properties](#y-axis-properties) | object | Bar, Line
 | gridBackgroundColor | color of the grid background | string | Bar, Line
+| holeRadius | percentage radius of the pie hole | number | Pie
+| transparentCircleRadius | percentage radius of the transparent overlay | number | Pie
+| transparentCircleColor | color of the transparent overlay | string | Pie
+| transparentCircleAlpha | alpha of the transparent overlay between 0 and 1 | number | Pie
+| rotationAngle | clockwise angle in degrees where the first segment starts (0 = 3 o'clock) | number | Pie
+
 
 #### data properties
 

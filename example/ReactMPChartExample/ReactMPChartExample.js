@@ -43,13 +43,15 @@ var ReactMPChartExample = React.createClass({
               dataSets: [{
                 values: [0.1, 1.3, 3.5],
                 colors: colors,
+                drawValues: false,
               }],
             }}
             onValueSelect={this.onSegmentSelect}
             onClearSelection={this.onSegmentDeselect}
-            drawValues={false}
             rotationAngle={45}
             holeRadius={70}
+            transparentCircleRadius={85}
+            transparentCircleAlpha={0.2}
           />
         </View>
         <View style={styles.chart}>
