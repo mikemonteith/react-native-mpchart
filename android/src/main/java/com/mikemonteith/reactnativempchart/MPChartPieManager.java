@@ -1,5 +1,7 @@
 package com.mikemonteith.reactnativempchart;
 
+import android.graphics.Color;
+
 import com.facebook.react.uimanager.ReactProp;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.github.mikephil.charting.charts.PieChart;
@@ -35,6 +37,24 @@ public class MPChartPieManager extends MPChartBaseManager<PieChart, PieData, Pie
     @ReactProp(name = "holeRadius", defaultFloat = 50f)
     public void setThickness(PieChart view, float holeRadius){
         view.setHoleRadius(holeRadius);
+        view.invalidate();
+    }
+
+    @ReactProp(name = "transparentCircleRadius", defaultFloat = 50f)
+    public void setTransparentCircleRadius(PieChart view, float transparentCircleRadius){
+        view.setTransparentCircleRadius(transparentCircleRadius);
+        view.invalidate();
+    }
+
+    @ReactProp(name = "transparentCircleColor")
+    public void setTransparentCircleColor(PieChart view, String transparentCircleColor){
+        view.setTransparentCircleColor(Color.parseColor(transparentCircleColor));
+        view.invalidate();
+    }
+
+    @ReactProp(name = "transparentCircleAlpha")
+    public void setTransparentCircleAlpha(PieChart view, float transparentCircleAlpha){
+        view.setTransparentCircleAlpha((int) (transparentCircleAlpha * 255));
         view.invalidate();
     }
 
