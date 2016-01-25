@@ -93,7 +93,6 @@ public abstract class MPChartBaseManager<ChartClass extends Chart, ChartDataClas
     }
 
     public void updateDataSetOptions(DataSetClass dataSet, ReadableMap map){
-        System.out.println("MPChartBaseManager#alertme()");
         if(map.hasKey("values")) {
             ReadableArray valueArray = map.getArray("values");
             for (int j = 0; j < valueArray.size(); j++) {
