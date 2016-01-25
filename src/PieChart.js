@@ -12,6 +12,21 @@ var PieChart = React.createClass({
      */
     holeRadius: React.PropTypes.number,
 
+    /**
+     * Radius of the transparent circle overlay
+     */
+    transparentCircleRadius: React.PropTypes.number,
+
+    /**
+     * Color of the transparent circle overlay
+     */
+    transparentCircleColor: React.PropTypes.string,
+
+    /**
+     * Alpha transparency of the transparent circle overlay
+     */
+    transparentCircleAlpha: React.PropTypes.number,
+
     /*
      * Angle that the first segment starts at in degrees
      * (0 degrees = 3 oclock)
