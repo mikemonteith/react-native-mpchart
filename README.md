@@ -23,6 +23,8 @@ include ':react-native-mpchart', ':app'
 project(':react-native-mpchart').projectDir = new File(settingsDir, '../node_modules/react-native-mpchart/android')
 ```
 
+Add the project to your gradle dependencies
+
 *android/app/build.gradle*
 ```
 apply plugin: 'com.android.application'
@@ -32,10 +34,10 @@ android {
 }
 
 dependencies {
-  compile fileTree(include: ['*.jar'], dir: 'libs')
-  compile 'com.android.support:appcompat-v7:23.0.0'
-  compile 'com.facebook.react:react-native:0.17.+'
-  compile project(':react-native-mpchart')
+  compile fileTree(dir: "libs", include: ["*.jar"])
+  compile "com.android.support:appcompat-v7:23.0.0"
+  compile "com.facebook.react:react-native:0.19.+"
+  compile project(":react-native-mpchart")
 }
 
 ```
@@ -49,14 +51,19 @@ Add the package to your ReactInstanceManager
 import com.mikemonteith.reactnativempchart.MPChartPackage;
 
 // ...
-mReactInstanceManager = ReactInstanceManager.builder()
-                .setApplication(getApplication())
-                .setBundleAssetName("index.android.bundle")
-                .setJSMainModuleName("index.android")
-                .addPackage(new MPChartPackage()) // <-- add this line
-                .setUseDeveloperSupport(BuildConfig.DEBUG)
-                .setInitialLifecycleState(LifecycleState.RESUMED)
-                .build();
+
+/**
+* A list of packages used by the app. If the app uses additional views
+* or modules besides the default ones, add more packages here.
+*/
+@Override
+protected List<ReactPackage> getPackages() {
+	return Arrays.<ReactPackage>asList(
+		new MainReactPackage(),
+		new MPChartPackage() // <-- add this line
+	);
+}
+
 // ...
 ```
 
