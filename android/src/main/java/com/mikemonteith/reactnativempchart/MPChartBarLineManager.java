@@ -3,7 +3,7 @@ package com.mikemonteith.reactnativempchart;
 import android.graphics.Color;
 
 import com.facebook.react.bridge.ReadableMap;
-import com.facebook.react.uimanager.ReactProp;
+import com.facebook.react.uimanager.annotations.ReactProp;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.BarLineChartBase;
 import com.github.mikephil.charting.charts.Chart;
