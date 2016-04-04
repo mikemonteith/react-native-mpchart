@@ -1,5 +1,7 @@
 package com.mikemonteith.reactnativempchart;
 
+import android.graphics.Color;
+
 import com.facebook.react.bridge.ReadableMap;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.DataSet;
@@ -27,6 +29,18 @@ public class MPChartLineManager extends MPChartBarLineManager<LineChart, LineDat
 
         if(map.hasKey("lineWidth")){
             dataSet.setLineWidth((float) map.getDouble("lineWidth"));
+        }
+
+        if(map.hasKey("fillColor")){
+            dataSet.setFillColor(Color.parseColor(map.getString("fillColor")));
+        }
+
+        if(map.hasKey("drawFilled")){
+            dataSet.setDrawFilled(map.getBoolean("drawFilled"));
+        }
+
+        if(map.hasKey("fillAlpha")){
+            dataSet.setFillAlpha((int) (map.getDouble("fillAlpha") * 255));
         }
     }
 

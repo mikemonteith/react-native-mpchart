@@ -28,6 +28,21 @@ var LineChart = React.createClass({
          * Pixel width of the line of best fit
          */
         lineWidth: React.PropTypes.number,
+
+        /*
+         * Draw shaded area underneath the line
+         */
+        drawFill: React.PropTypes.bool,
+
+        /*
+         * Color of fill underneath chart
+         */
+        fillColor: React.PropTypes.string,
+
+        /*
+         * Alpha value between 0 and 1
+         */
+        fillAlpha: React.PropTypes.number,
       })),
     }),
   },

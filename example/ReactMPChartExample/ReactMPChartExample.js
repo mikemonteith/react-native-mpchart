@@ -99,6 +99,9 @@ var ReactMPChartExample = React.createClass({
                 drawValues: false,
                 drawCubic: true,
                 lineWidth: 3,
+                drawFilled: true,
+                fillColor: '#990000',
+                fillAlpha: 0.5,
               }],
               xValues: new Array(15).fill("x"),
             }}
