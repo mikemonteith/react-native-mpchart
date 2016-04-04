@@ -131,6 +131,9 @@ var ExampleComponent = React.createClass({
 | drawCircles | draw circles on data points | boolean | Line
 | drawCubic | draw a smooth line-of-best-fit | boolean | Line
 | lineWidth | width of the line-of-best-fit | number | Line
+| drawFill | draw a colored area underneath the line | boolean | Line
+| fillColor | color of fill underneath the line | string | Line
+| fillAlpha | alpha of the fill underneath the line between 0 and 1 | number | Line
 
 #### axis properties
 
