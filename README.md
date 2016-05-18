@@ -1,4 +1,8 @@
+### THIS LIBRARY IS NO LONGER MAINTAINED.
+See https://github.com/hongyin163/react-native-chart-android and https://github.com/Jpadilla1/react-native-ios-charts
+
 # react-native-mpchart
+
 
 A React Native chart library
 
